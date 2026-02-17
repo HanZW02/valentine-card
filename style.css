@@ -1,0 +1,215 @@
+/* Reset & Basic Setup */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); /* Space Background */
+    font-family: "Cinzel", serif; /* Font Mewah */
+    color: #d4af37; /* Warna Emas */
+    overflow: hidden;
+}
+
+/* Membuat Efek Bintang Sederhana */
+.stars {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    z-index: -1;
+    animation: starMove 100s linear infinite;
+}
+
+@keyframes starMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-500px); }
+}
+
+/* Envelope Screen */
+#envelope-container {
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+#envelope-container:hover {
+    transform: scale(1.05);
+}
+
+#envelope-icon {
+    font-size: 100px;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6)); /* Glow Emas */
+    animation: float 3s ease-in-out infinite;
+}
+
+.instruction {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(212, 175, 55, 0.7);
+    margin-top: 10px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Letter Window (Kartu Mewah) */
+#letter-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Background redup saat kartu muncul */
+    backdrop-filter: blur(5px);
+}
+
+.letter-window {
+    width: 90vw;
+    max-width: 450px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Desain Kartu Hitam Emas */
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border: 1px solid #d4af37;
+    border-radius: 4px; /* Sudut tajam lebih elegan */
+    box-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.2),
+        inset 0 0 20px rgba(0, 0, 0, 0.8);
+    
+    gap: 20px;
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s;
+    position: relative;
+}
+
+/* Hiasan Sudut Emas (Opsional) */
+.letter-window::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    pointer-events: none;
+}
+
+.letter-window.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+h1 {
+    font-size: 26px;
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Efek Teks Emas Mengkilap */
+}
+
+/* Emoji Styling */
+.cat {
+    font-size: 90px;
+    margin: 15px 0;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 5;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-family: "Cinzel", serif;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.yes-btn {
+    /* Tombol Emas Solid */
+    background: linear-gradient(to bottom, #d4af37 0%, #aa771c 100%);
+    color: #000;
+    border: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.yes-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    background: linear-gradient(to bottom, #eacda3 0%, #d6ae7b 100%);
+}
+
+.no-btn {
+    /* Tombol Outline Elegan */
+    background: transparent;
+    color: #888;
+    border: 1px solid #444;
+}
+
+.no-wrapper {
+    position: relative;
+}
+
+/* Final Text Style */
+.final-text {
+    font-size: 18px;
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    width: 80%;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.cat {
+    transition: all 0.5s ease; 
+}
+
+.cat img {
+    width: 100%;      
+    max-width: 220px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), border: 2px solid rgba(212, 175, 55, 0.5);
+    
+    animation: imagePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes imagePop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
